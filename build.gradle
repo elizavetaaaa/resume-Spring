@@ -1,0 +1,43 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.6.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	// https://mvnrepository.com/artifact/com.lowagie/itext
+	compile group: 'com.lowagie', name: 'itext', version: '2.1.7'
+	// https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox
+	compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.8'
+	// https://mvnrepository.com/artifact/com.pdfcrowd/pdfcrowd
+	compile group: 'com.pdfcrowd', name: 'pdfcrowd', version: '4.3.5'
+	// https://mvnrepository.com/artifact/org.webjars/jspdf
+	compile group: 'org.webjars', name: 'jspdf', version: '1.3.5'
+
+
+}
+
+test {
+	useJUnitPlatform()
+}

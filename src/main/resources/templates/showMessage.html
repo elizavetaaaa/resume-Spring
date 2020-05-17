@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="eng">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>YOUR CV</title>
+    <style type="text/css">
+        body {
+            font: 10pt Arial, Helvetica, sans-serif; /* Шрифт на веб-странице */
+            background: #fff; /* Цвет фона */
+            margin: 0; /* Убираем отступы */
+        }
+        h2 {
+            font-size: 1.3em; /* Размер шрифта */
+            color: #483D8B; /* Цвет текста */
+            margin-bottom: 0; /* Отступ снизу */
+        }
+        #container {
+            width: 900px; /* Ширина макета */
+            margin: 0 auto; /* Выравниваем по центру */
+            position: relative; /* Относительное позиционирование */
+        }
+        #header {
+            letter-spacing: 50px;
+            text-align: center;
+            background: #483D8B; /* Цвет фона */
+            font-size: 24pt; /* Размер текста */
+            font-weight: bold; /* Жирное начертание */
+            color: #edeed5; /* Цвет текста */
+            padding: 5px; /* Отступы вокруг текста */
+            margin-bottom: 40px;
+        }
+        #content {
+            margin-right: 550px; /* Отступ справа */
+            padding: 10px; /* Поля вокруг текста */
+            border-right: 1px dashed #183533; /* Линия справа */
+        }
+        #content p {
+            margin-top: 0.3em /* Отступ сверху */
+        }
+        #sidebar {
+            position: absolute; /* Абсолютное позиционирование */
+            right: 0; /* Положение от правого края */
+            top: 60px; /* Положение от верхнего края */
+            width: 500px; /* Ширина */
+        }
+        #footer {
+            position:absolute;
+            bottom:0;
+
+            width: 900px; /* Ширина макета */
+            height: 60px;
+            margin-top: 60px;
+        }
+        .black{
+            font-weight: 100;
+            color:black;
+        }
+        #job{
+            margin-top: 50px;
+
+        }
+        #btn{
+
+            margin-left: 750px;
+            width:60px;
+            height:50px;
+            /*background-color:#0C9;
+            color:#FFF;*/
+            border-radius:50px;
+            text-align:center;
+            box-shadow: 6px 3px 3px #999;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="header">RESUME</div>
+    <div id="content">
+        <h1>РERSONAL INFORMATION</h1>
+        <table>
+            <tr>
+                <td><h2>Name:</h2></td>
+                <td><h2 class="black"  th:text="${user.name}"></h2></td>
+            </tr>
+
+            <tr><td><h2>Surname:</h2></td>
+                <td> <h2 class="black"  th:text="${user.surname}"></h2></td>
+            </tr>
+            <tr>
+                <td><h2>Birthday:</h2></td>
+                <td><h2 class="black"  th:text="${user.birthday}"></h2></td>
+            </tr>
+            <tr>
+                <td><h2> Gender:</h2></td>
+                <td><h2 class="black" th:text="${user.gender}"></h2></td>
+            </tr>
+            <tr>
+                <td><h2>Married: </h2></td>
+                <td><h2 class="black" th:text="${user.married}"></h2></td>
+            </tr>
+        </table>
+
+        <h1>Contacts</h1>
+        <table>
+
+            <tr>
+                <td><h2>Phone number:</h2></td>
+                <td><h2 class="black" th:text="${user.phoneNumber}"></h2></td>
+            </tr>
+            <tr>
+                <td><h2>Email:</h2></td>
+                <td><h2 class="black" th:text="${user.email}"></h2></td>
+            </tr>
+
+            <tr>
+                <td><h2>Country:</h2></td>
+                <td><h2 class="black" th:text="${user.country}"></h2></td>
+            </tr>
+            <tr>
+                <td><h2>Address:</h2></td>
+                <td><h2 class="black" th:text="${user.address}"></h2></td>
+            </tr>
+
+            </table>
+
+        <h1>Skills</h1>
+        <table>
+            <tr>
+                <td><h2>Languages:</h2></td>
+                <td><h2 class="black" th:text="${user.languages}"></h2></td>
+            </tr>
+            <tr>
+                <td><h2>Technical Skills:</h2></td>
+                <td><h2 class="black" th:text="${user.technicalSkills}"></h2></td>
+            </tr>
+        </table>
+
+
+
+    </div>
+    <div id="sidebar">
+
+        <h1 id="job">Job you apply for</h1>
+        <h2 class="black" th:text="${user.position}"></h2>
+        <h1>Professional experience</h1>
+        <h2>Work done:</h2>
+        <h2 class="black" th:text="${user.workDone}"></h2>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <script type="text/javascript">
+        $(document).on('click','#btn',function(){ let pdf = new jsPDF(); let section=$('body'); let page= function() { pdf.save('resume.pdf'); }; pdf.addHTML(section,page); })
+    </script>
+    <div id="footer">
+        <button id="btn"> CV in PDF</button>
+
+    </div>
+</div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.w3.org/1999/xhtml" lang="eng">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUILD CV</title>
+    <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <!--data submission form-->
+        <form action="#" method="post" th:action="@{/addUser}" th:object="${user}">
+            <h1> RESUME</h1>
+
+            <fieldset>
+
+                <legend><span class="number">1</span> Your Basic Info</legend>
+
+                <label for="name">Name:</label>
+                <p  th:if="${#fields.hasErrors('name')}" th:errors="*{name}"  class = "error">Name Error</p>
+                <input   id="name" name="user_name"type="text" th:field="*{name}" />
+
+
+
+                <label>Surname:</label>
+                <p  th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"  class = "error">Surname Error</p>
+                <input type="text" th:field="*{surname}" />
+
+
+                <label>Birthday (yyyy-mm-dd):</label>
+                <input type="text" th:field="*{birthday}" />
+
+
+
+                <label>Gender:</label>
+                <p  th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"  class = "error">Gender Error</p>
+                <input type="radio" th:field="*{gender}" value="Male" />Male
+                <input type="radio" th:field="*{gender}" value="Female" />Female<br/>
+
+                <label>Married:</label>
+                <input type="checkbox" th:field="*{married}" />
+
+                <label>Address:</label>
+                <p  th:if="${#fields.hasErrors('address')}" th:errors="*{address}"  class = "error">Surname Error</p>
+                <input type="text" th:field="*{address}" />
+
+                <label>Country:</label>
+                <p  th:if="${#fields.hasErrors('country')}" th:errors="*{country}"  class = "error">Surname Error</p>
+                <input input type="text" th:field="*{country}" />
+
+
+                <label>Email:</label>
+                <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  class = "error">Enter Valid Email </p>
+                <input type="text" th:field="*{email}" />
+
+
+                <label>Phone number:</label>
+                <p  th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"  class = "error">Ph.number Error</p>
+                <input type="text" th:field="*{phoneNumber}" />
+
+
+
+            </fieldset>
+
+            <fieldset>
+
+                <legend><span class="number">2</span>SKILLS</legend>
+
+                <label>Languages:</label>
+                <p  th:if="${#fields.hasErrors('languages')}" th:errors="*{languages}"  class = "error">Lng Error</p>
+                <input input type="text" th:field="*{languages}" />
+
+
+                <label>Technical skills:</label>
+                <p  th:if="${#fields.hasErrors('technicalSkills')}" th:errors="*{technicalSkills}"  class = "error">Surname Error</p>
+                <input input type="text" th:field="*{technicalSkills}" />
+
+
+
+            </fieldset>
+                <fieldset>
+
+                <legend><span class="number">3</span>PROFESSIONAL INFO</legend>
+
+                <!--workDone--> <label for="bio"> Professional Bio (specify work done ):</label>
+
+                <p  th:if="${#fields.hasErrors('workDone')}" th:errors="*{workDone}"  class = "error">Surname Error</p>
+                <textarea id="bio" th:field="*{workDone}"></textarea></textarea>
+
+
+
+                <label for="job">Job Role (job you apply for):</label><!--posision-->
+                    <!--<p  th:if="${#fields.hasErrors('position')}" th:errors="*{position}"  class = "error">Surname Error</p>-->
+                <select id="job" name="user_job" th:field="*{position}">
+                    <optgroup label="Web">
+                        <option value="frontend developer">Front-End Developer</option>
+                        <option value="php developer">PHP Developer</option>
+                        <option value="python developer">Python Developer</option>
+                        <option value="rails developer">Rails Developer</option>
+                        <option value="web designer">Web Designer</option>
+                        <option value="wordpress_developer">Wordpress Developer</option>
+                    </optgroup>
+                    <optgroup label="Mobile">
+                        <option value="android developer">Android Developer</option>
+                        <option value="ios developer">IOS Developer</option>
+                        <option value="mobile designer">Mobile Designer</option>
+                    </optgroup>
+                    <optgroup label="Business">
+                        <option value="business owner">Business Owner</option>
+                        <option value="freelancer">Freelancer</option>
+                    </optgroup>
+                </select>
+
+            </fieldset>
+
+            <input class="button"  type="submit" value="Submit"/>
+
+            <input  class="button" type="reset" value="Reset"></p>
+
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
