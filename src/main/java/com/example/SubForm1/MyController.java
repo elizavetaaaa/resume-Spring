@@ -49,6 +49,7 @@ public class MyController implements WebMvcConfigurer {
     
 
 /*
+
     @PostMapping("/upload")
     public String uploadImage(@RequestParam("file") MultipartFile file) throws IllegalStateException,IOException{
         System.out.println("1");
